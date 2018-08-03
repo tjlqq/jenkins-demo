@@ -18,7 +18,7 @@ node('jt-jnlp') {
     }
     stage('Push') {
         echo "4.Push Docker Image Stage"
-            sh "docker push 10.40.11.71/k8s/jenkins-demo:${build_tag}"
+        sh "docker push 10.40.11.71/k8s/jenkins-demo:${build_tag}"
         }
     }
     stage('Deploy') {
