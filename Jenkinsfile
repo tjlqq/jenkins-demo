@@ -14,13 +14,13 @@ node('jt-jnlp') {
     }
     stage('Build') {
         echo "3.Build Docker Image Stage"
-        sh "docker build -t cnych/jenkins-demo:${build_tag} ."
+        sh "docker build -t 10.40.11.71/k8s/jenkins-demo:${build_tag} ."
     }
     stage('Push') {
         echo "4.Push Docker Image Stage"
         withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
             sh "docker login -u ${dockerHubUser} -p ${dockerHubPassword} 10.40.11.71"
-            sh "docker push cnych/jenkins-demo:${build_tag}"
+            sh "docker push 10.40.11.71/k8s/jenkins-demo:${build_tag}"
         }
     }
     stage('Deploy') {
